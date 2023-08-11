@@ -3,9 +3,9 @@ import { HomeContainer, Product } from "../styles/pages/home";
 import Image from "next/image";
 import { useKeenSlider } from "keen-slider/react";
 import { stripe } from "../lib/stripe";
-
-import "keen-slider/keen-slider.min.css";
 import Stripe from "stripe";
+import "keen-slider/keen-slider.min.css";
+import Link from "next/link";
 
 interface HomeProps {
   products: {
@@ -17,6 +17,8 @@ interface HomeProps {
 }
 
 export default function Home({ products }: HomeProps) {
+
+  // Usando Keen-Slider para fazer o carrosel
   const [sliderRef] = useKeenSlider({
     slides: {
       perView: 2.5,
@@ -28,14 +30,15 @@ export default function Home({ products }: HomeProps) {
     <HomeContainer ref={sliderRef} className="keen-slider">
       {products.map(product => {
         return (
-          <Product key={product.id} className="keen-slider__slide">
-            <Image src={product.imageURL} width={520} height={480} alt="" />
-            <footer>
-
-              <strong>{product.name}</strong>
-              <span>{product.price}</span>
-            </footer>
-          </Product>
+          <Link href={`/product/${product.id}`} key={product.id}>
+            <Product className="keen-slider__slide">
+              <Image src={product.imageURL} width={520} height={480} alt="" />
+              <footer>
+                <strong>{product.name}</strong>
+                <span>{product.price}</span>
+              </footer>
+            </Product>
+          </Link>
         )
       })}
     </HomeContainer>

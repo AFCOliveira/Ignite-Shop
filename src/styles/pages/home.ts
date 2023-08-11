@@ -20,7 +20,7 @@ export const Product = styled('a', {
   justifyContent: 'center',
 
   img: {
-    objectFit: 'cover',
+    objectFit: 'cover', // Para não distorcer a imagem 
   },
 
   footer: {
@@ -44,6 +44,7 @@ export const Product = styled('a', {
 
     strong: {
       fontSize: '$lg',
+      color: '$gray100',
     },
 
     span: {
