@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import { ImageContainer, ProductContainer, ProductDetails } from '../../styles/pages/product';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { stripe } from '../../lib/stripe';
